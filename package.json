@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npm run build-lib && npm run build-web",
     "build-lib": "npx del-cli lib && babel -s --out-dir lib src",
-    "build-web": "export NODE_ENV=production && webpack",
+    "build-web": "npx webpack --config webpack.config.js",
     "dev": "babel --watch --out-dir lib src",
     "test": "export NODE_ENV=production && istanbul cover node_modules/mocha/bin/_mocha -- --ui exports --colors 'test/**/*.js'",
     "coverage": "cat ./coverage/lcov.info | coveralls"
@@ -43,9 +43,6 @@
     "babel-preset-env": "^1.7.0",
     "coveralls": "^2.13.0",
     "del-cli": "^1.1.0",
-    "eslint": "^3.19.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-prettier": "^2.6.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "node-noop": "^1.0.0",

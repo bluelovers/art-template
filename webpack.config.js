@@ -1,7 +1,10 @@
+process.env.NODE_ENV = 'production';
+
 const path = require('path');
 const webpack = require('webpack');
 const packageInfo = require('./package.json');
 const version = packageInfo.version;
+const fs = require('fs');
 
 module.exports = {
     target: 'web',
@@ -24,18 +27,22 @@ module.exports = {
             'html-minifier': 'node-noop'
         }
     },
+    /*
     module: {
         rules: [
             {
                 test: /\.js$/,
                 use: [
                     {
-                        loader: 'eslint-loader'
+                        exclude: /node_modules/,
+                        loader: 'eslint-loader',
+                        options: JSON.parse(fs.readFileSync('.eslintrc.json').toString())
                     }
                 ]
             }
         ]
     },
+    */
     devtool: 'source-map',
     plugins: [
         new webpack.BannerPlugin(
