@@ -93,7 +93,7 @@ const compile = (source, options = {}) => {
 
     const render = (data, blocks) => {
         try {
-            return fn(data, blocks);
+            return fn(data, blocks).replace(/^(?:\r\n|\n|\r)/, '');
         } catch (error) {
             // 运行时出错以调试模式重载
             if (!options.compileDebug) {
