@@ -85,17 +85,23 @@ const settings = {
 settings.rules.reverse();
 
 settings.rules.push({
-    ...artRule,
+    use: artRule.use,
+    _split: artRule._split,
+    
     test: /{{([@#]?)[ \t]*()([\w\W]*?)[ \t]*}}(?:\r\n|\n|\r)?/,
 });
 
 settings.rules.push({
-    ...artRule,
+    use: artRule.use,
+    _split: artRule._split,
+    
     test: /(?:(?:\r\n|\n|\r)[ \t]*)?{{([@#]?)[ \t]*(\/)([\w\W]*?)[ \t]*}}/,
 });
 
 settings.rules.push({
-    ...nativeRule,
+    use: nativeRule.use,
+    _split: nativeRule._split,
+
     test: /(?:(?:\r\n|\n|\r)[ \t]*)?<%(#?)((?:==|=#|[=-])?)[ \t]*(\})[ \t]*(-?)%>(?:(?:\r\n|\n|\r)(?=[ \t]*(?:<%|{{)))?/,
 });
 
