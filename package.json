@@ -18,7 +18,7 @@
     "build-web": "npx webpack --config webpack.config.js",
     "dev": "babel --watch --out-dir lib src",
     "test": "nyc mocha",
-    "test-mocha": "mocha --ui exports --colors \"./test/**/*.js\"",
+    "test-mocha": "mocha --ui exports --colors \"./test/**/*.test.js\"",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "prepublishOnly": "echo prepublishOnly && npm run build"
   },

@@ -5,3 +5,4 @@
 *.ts
 !*.d.ts
 *.tgz
+/package-lock.json
