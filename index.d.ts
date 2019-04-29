@@ -103,12 +103,25 @@ declare type artTemplateDefaults = {
   // imported template variables
   imports: { [key: string]: Function }
 }
+
 /**
  *
  * @param filenameOrTemplateId  [ for bowser ] id of template      [ for Node ] fileName of template
  * @param content [ if is Object ] return compile result , [ if is string ] return compile Funtion
  */
-declare function artTemplate(filenameOrTemplateId: string, content?: string | Object): any;
+declare function artTemplate(filenameOrTemplateId: string, content?: string): (data: any) => string;
+/**
+ *
+ * @param filenameOrTemplateId  [ for bowser ] id of template      [ for Node ] fileName of template
+ * @param content [ if is Object ] return compile result , [ if is string ] return compile Funtion
+ */
+declare function artTemplate(filenameOrTemplateId: string, content?: Object): string;
+/**
+ *
+ * @param filenameOrTemplateId  [ for bowser ] id of template      [ for Node ] fileName of template
+ * @param content [ if is Object ] return compile result , [ if is string ] return compile Funtion
+ */
+declare function artTemplate(filenameOrTemplateId: string, content?: string | Object): string | ((data: any) => string);
 declare namespace artTemplate {
   export const defaults: artTemplateDefaults;
   export const extension: { [key: string]: Function };
