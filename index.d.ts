@@ -1,3 +1,12 @@
+declare type artTemplateRule = {
+  test: RegExp,
+  use?(match, raw, close, code): {
+    code: string,
+    output: 'raw' | 'escape', 
+  },
+  _split?<T>(esTokens: T[]): string[],
+}
+
 declare type artTemplateDefaults = {
   /**
    * template name
@@ -6,7 +15,7 @@ declare type artTemplateDefaults = {
   /**
    * an array of rules of template syntax
    */
-  rules: any[];
+  rules: artTemplateRule[];
   /**
    * whether to automatically encode output statements of template. Setting false will close that functionality
    * escape can prevent XSS attacks
@@ -56,7 +65,7 @@ declare type artTemplateDefaults = {
     minifyCSS: boolean,
     minifyJS: boolean,
     // automatically merged at runtime: rules.map(rule => rule.test)
-    ignoreCustomFragments: any[]
+    ignoreCustomFragments: any[],
   };
 
   /**
