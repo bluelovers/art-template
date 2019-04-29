@@ -18,7 +18,8 @@
     "build-web": "npx webpack --config webpack.config.js",
     "dev": "babel --watch --out-dir lib src",
     "test": "export NODE_ENV=production && istanbul cover node_modules/mocha/bin/_mocha -- --ui exports --colors 'test/**/*.js'",
-    "coverage": "cat ./coverage/lcov.info | coveralls"
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "prepublishOnly": "echo prepublishOnly && npm run build"
   },
   "main": "index.js",
   "files": [
