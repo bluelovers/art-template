@@ -82,6 +82,25 @@ const settings = {
     imports: runtime
 };
 
+settings.rules.reverse();
+
+settings.rules.push({
+    ...artRule,
+    test: /{{([@#]?)[ \t]*()([\w\W]*?)[ \t]*}}(?:\r\n|\n|\r)?/,
+});
+
+settings.rules.push({
+    ...artRule,
+    test: /(?:(?:\r\n|\n|\r)[ \t]*)?{{([@#]?)[ \t]*(\/)([\w\W]*?)[ \t]*}}/,
+});
+
+settings.rules.push({
+    ...nativeRule,
+    test: /(?:(?:\r\n|\n|\r)[ \t]*)?<%(#?)((?:==|=#|[=-])?)[ \t]*(\})[ \t]*(-?)%>(?:(?:\r\n|\n|\r)(?=[ \t]*(?:<%|{{)))?/,
+});
+
+settings.rules.reverse();
+
 function Defaults() {
     this.$extend = function(options) {
         options = options || {};
